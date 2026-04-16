@@ -1,4 +1,5 @@
 import './App.css'
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
       <h1>Iligan City, Lanao del Norte, Philippines</h1>
       <h1>martinchavy383@gmail.com</h1>
       <h1>09154000997</h1>
+      <Analytics />
     </>
   )
 }
