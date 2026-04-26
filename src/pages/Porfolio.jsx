@@ -15,7 +15,7 @@ function Porfolio() {
   const sections = useMemo(
     () => [
       { id: "about", label: "About" },
-      { id: "experience", label: "Experience" },
+      { id: "experiences", label: "Experience" },
       { id: "projects", label: "Projects" },
       { id: "education", label: "Education" },
       { id: "tech-stack", label: "Tech Stack" },
