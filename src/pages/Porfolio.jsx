@@ -25,6 +25,67 @@ function Porfolio() {
   )
 
   const [activeSection, setActiveSection] = useState("about")
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    setSubmitMessage("");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          from_name: "Learning Assistance Volunteer",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus("success");
+        setSubmitMessage("Thank you! Your message has been sent successfully.");
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus("error");
+        setSubmitMessage(
+          result.message || "Something went wrong. Please try again."
+        );
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+      setSubmitMessage("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -76,10 +137,20 @@ function Porfolio() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.45 }}
                 className="space-y-7 rounded-2xl border border-zinc-900 bg-zinc-950/70 p-7"
+                onSubmit={handleSubmit}
               >
+                {submitStatus === "success" && (
+                  <div className="text-green-500">{submitMessage}</div>
+                )}
+                {submitStatus === "error" && (
+                  <div className="text-red-500">{submitMessage}</div>
+                )}
                 <label className="block">
                   <span className="text-xs uppercase tracking-wider text-zinc-500">Name</span>
                   <input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     type="text"
                     placeholder="Your name"
                     className="mt-2 w-full border-b border-zinc-800 bg-transparent pb-3 text-zinc-200 outline-none transition focus:border-indigo-400"
@@ -89,6 +160,9 @@ function Porfolio() {
                   <span className="text-xs uppercase tracking-wider text-zinc-500">Email</span>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="your@email.com"
                     className="mt-2 w-full border-b border-zinc-800 bg-transparent pb-3 text-zinc-200 outline-none transition focus:border-indigo-400"
                   />
@@ -96,13 +170,17 @@ function Porfolio() {
                 <label className="block">
                   <span className="text-xs uppercase tracking-wider text-zinc-500">Message</span>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows={4}
                     placeholder="Tell me about your project..."
                     className="mt-2 w-full resize-none border-b border-zinc-800 bg-transparent pb-3 text-zinc-200 outline-none transition focus:border-indigo-400"
                   />
                 </label>
                 <button
-                  type="button"
+                  type="submit"
+                  disabled={isSubmitting}
                   className="inline-flex items-center gap-2 rounded-xl border border-indigo-400/60 bg-indigo-500 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition hover:bg-indigo-400"
                 >
                   <FiSend />
