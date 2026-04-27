@@ -15,7 +15,7 @@ function Porfolio() {
   const sections = useMemo(
     () => [
       { id: "about", label: "About" },
-      { id: "experiences", label: "Experience" },
+      { id: "experience", label: "Experiences" },
       { id: "projects", label: "Projects" },
       { id: "education", label: "Education" },
       { id: "tech-stack", label: "Tech Stack" },
@@ -33,6 +33,13 @@ function Porfolio() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
   const [submitMessage, setSubmitMessage] = useState("");
+
+  useEffect(() => {
+    const hashSection = window.location.hash.replace("#", "")
+    if (sections.some((section) => section.id === hashSection)) {
+      setActiveSection(hashSection)
+    }
+  }, [sections])
 
   const handleChange = (e) => {
     setFormData({
@@ -110,7 +117,7 @@ function Porfolio() {
     <div className="min-h-screen scroll-smooth bg-black text-zinc-100">
       <CursorGlow />
       <div className="relative z-10">
-        <Navbar sections={sections} activeSection={activeSection} />
+        <Navbar sections={sections} activeSection={activeSection} onSectionClick={setActiveSection} />
         <main>
           <HeroSection />
           <ExperienceSection />
