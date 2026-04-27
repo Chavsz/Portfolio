@@ -2,23 +2,26 @@ import { motion } from "motion/react"
 import { FiBriefcase } from "react-icons/fi"
 import SectionHeading from "./SectionHeading"
 import pixzelLogo from "../../assets/pixzel digital image.jpg"
+import upworkLogo from "../../assets/upwork-round-logo-icon.png"
 
 const experiences = [
   {
     title: "Full-Stack Developer",
     company: "Pixzel Digital",
-    years: "2026 - Present",
+    years: "February 2026 - May 2026",
     description:
       "Developed and maintained web applications using React, Next.js, Tailwind, and TypeScript. Worked on both frontend and backend development.",
     skills: ["React", "Next.js", "Tailwind", "TypeScript", "React-Redux", "PHP", "Laravel", "Blade", "Bootstrap", "CSS", "MySQL", "Github"],
+    logo: pixzelLogo,
   },
   {
     title: "Full-Stack Developer",
     company: "Upwork",
-    years: "2026 - Present",
+    years: "June 2026 - Present",
     description:
       "Freelance Full-Stack Developer. Worked on both frontend and backend development.",
     skills: ["React", "Next.js", "Tailwind", "TypeScript", "Bootstrap", "CSS", "MySQL", "PostgreSQL", "MongoDB", "Supabase", "Github", "Git"],
+    logo: upworkLogo,
   },
 ]
 
@@ -47,7 +50,7 @@ function ExperienceSection() {
             className="relative rounded-2xl border border-zinc-900 bg-zinc-950/75 p-7"
           >
             <span className="absolute -left-[53.5px] top-2 flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/30 bg-black">
-              <img src={pixzelLogo} alt="Pixzel Digital logo" className="h-full w-full rounded-full object-cover" />
+              <img src={experience.logo} alt={experience.company} className="h-full w-full rounded-full object-cover" />
             </span>
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
