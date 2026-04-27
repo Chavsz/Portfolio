@@ -10,7 +10,15 @@ const experiences = [
     years: "2026 - Present",
     description:
       "Developed and maintained web applications using React, Next.js, Tailwind, and TypeScript. Worked on both frontend and backend development.",
-    skills: ["React", "Next.js", "Tailwind", "TypeScript", "React-Redux", "PHP", "Laravel", "Blade", "Bootstrap", "CSS", "MySQL"],
+    skills: ["React", "Next.js", "Tailwind", "TypeScript", "React-Redux", "PHP", "Laravel", "Blade", "Bootstrap", "CSS", "MySQL", "Github"],
+  },
+  {
+    title: "Full-Stack Developer",
+    company: "Upwork",
+    years: "2026 - Present",
+    description:
+      "Freelance Full-Stack Developer. Worked on both frontend and backend development.",
+    skills: ["React", "Next.js", "Tailwind", "TypeScript", "Bootstrap", "CSS", "MySQL", "PostgreSQL", "MongoDB", "Supabase", "Github", "Git"],
   },
 ]
 
