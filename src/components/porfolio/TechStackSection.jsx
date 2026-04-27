@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react"
 import { motion } from "motion/react"
 import SectionHeading from "./SectionHeading"
-import { FaReact, FaBootstrap, FaNodeJs, FaPython, FaDocker, FaAws, FaGithub, FaGitAlt, FaDigitalOcean, FaFigma, FaPhp } from "react-icons/fa"
+import { FaReact, FaBootstrap, FaNodeJs, FaPython, FaDocker, FaAws, FaGithub, FaGitAlt, FaDigitalOcean, FaFigma, FaPhp, FaJava } from "react-icons/fa"
 import { SiTypescript, SiRedis, SiMongodb } from "react-icons/si";
 import { RiNextjsFill, RiTailwindCssFill, RiSupabaseFill, RiFirebaseFill } from "react-icons/ri";
 import { BiLogoPostgresql } from "react-icons/bi";
@@ -11,9 +11,9 @@ import { GrMysql } from "react-icons/gr";
 const categoryOrder = ["All", "Frontend", "Backend", "Database", "DevOps", "Tools"]
 
 const technologies = [
-  { name: "React", icon: <FaReact />, border: "hover:border-indigo-400/70", iconColor: "text-indigo-400", category: "Frontend" },
-  { name: "React-Native",  icon: <FaReact />, border: "hover:border-indigo-400/70" , iconColor: "text-indigo-400", category: "Frontend" },
-  { name: "TypeScript", icon: <SiTypescript />, border: "hover:border-cyan-500" , iconColor: "text-cyan-500" , category: "Frontend" },
+  { name: "React", icon: <FaReact />, border: "hover:border-sky-400", iconColor: "text-sky-400", category: "Frontend" },
+  { name: "React-Native",  icon: <FaReact />, border: "hover:border-sky-400" , iconColor: "text-sky-400", category: "Frontend" },
+  { name: "TypeScript", icon: <SiTypescript />, border: "hover:border-sky-600" , iconColor: "text-sky-600" , category: "Frontend" },
   { name: "Next.js", icon: <RiNextjsFill />, border: "hover:border-blue-50" , iconColor: "text-blue-50" , category: "Frontend" },
   { name: "Tailwind", icon: <RiTailwindCssFill />, border: "hover:border-sky-400" , iconColor: "text-sky-400" , category: "Frontend" },
   { name: "Bootstrap", icon: <FaBootstrap />, border: "hover:border-violet-700" , iconColor: "text-violet-700" , category: "Frontend" },
@@ -23,16 +23,17 @@ const technologies = [
   { name: "PostgreSQL", icon: <BiLogoPostgresql />, border: "hover:border-blue-400", iconColor: "text-blue-400", category: "Database" },
   { name: "Redis", icon: <SiRedis />, border: "hover:border-rose-500", iconColor: "text-rose-500", category: "Database" },
   { name: "MongoDB", icon: <SiMongodb />, border: "hover:border-green-500" , iconColor: "text-green-500" , category: "Database" },
-  { name: "Firebase", icon: <RiFirebaseFill />, border: "hover:border-red-700" , iconColor: "text-red-700" , category: "Database" },
+  { name: "Firebase", icon: <RiFirebaseFill />, border: "hover:border-orange-600" , iconColor: "text-orange-600" , category: "Database" },
   { name: "Supabase", icon: <RiSupabaseFill />, border: "hover:border-emerald-600" , iconColor: "text-emerald-600" , category: "Database" },
   { name: "Docker", icon: <FaDocker />, border: "hover:border-blue-500" , iconColor: "text-blue-500" , category: "DevOps" },
   { name: "AWS", icon: <FaAws />, border: "hover:border-orange-500" , iconColor: "text-orange-500" , category: "DevOps" },
   { name: "Github", icon: <FaGithub />, border: "hover:border-gray-400", iconColor: "text-gray-400", category: "DevOps" },
   { name: "Laravel", icon: <FaLaravel />, border: "hover:border-indigo-400/70" , iconColor: "text-indigo-400/70" , category: "Backend" },
-  { name: "Git", icon: <FaGitAlt />, border: "hover:border-red-500" , iconColor: "text-red-500" , category: "Tools" },
+  { name: "Git", icon: <FaGitAlt />, border: "hover:border-orange-600" , iconColor: "text-orange-600" , category: "Tools" },
   { name: "Figma", icon: <FaFigma />, border: "hover:border-fuchsia-600" , iconColor: "text-fuchsia-600" , category: "Tools" },
   { name: "PHP", icon: <FaPhp />, border: "hover:border-indigo-400/70" , iconColor: "text-indigo-400/70" , category: "Backend" },
   { name: "Digital Ocean", icon: <FaDigitalOcean />, border: "hover:border-blue-500", iconColor: "text-blue-500", category: "DevOps" },
+  { name: "Java", icon: <FaJava/>, border: "hover:border-orange-600", iconColor: "text-orange-600", category: "Backend" },
 ]
 
 function TechStackSection() {
@@ -50,7 +51,7 @@ function TechStackSection() {
   return (
     <section id="tech-stack" className="mx-auto w-full max-w-6xl px-6 py-20">
       <SectionHeading eyebrow="Toolkit" title="Tech Stack" />
-      {/* <div className="mb-8 flex flex-wrap gap-2">
+      <div className="mb-8 flex flex-wrap gap-2">
         {categoryOrder.map((category) => {
           const isActive = category === activeCategory
           return (
@@ -73,8 +74,8 @@ function TechStackSection() {
             </button>
           )
         })}
-      </div> */}
-      {/* <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-7">
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-7">
         {items.map((item, index) => (
           <motion.article
             key={item.name}
@@ -83,7 +84,7 @@ function TechStackSection() {
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.3, delay: index * 0.03 }}
             // whileHover={{ y: -4 }}
-            className={`rounded-xl border border-zinc-900 bg-zinc-950/75 p-3 text-center ${item.border} translate-y-2 hover:translate-y-0 transition-all duration-500`}
+            className={`rounded-lg border border-zinc-900 bg-zinc-950/75 p-3.5 text-center ${item.border} translate-y-2 hover:translate-y-0 transition-all duration-500`}
           >
             <div className="flex items-center justify-center gap-1">
               <div className={`${item.iconColor}`}>
@@ -93,8 +94,8 @@ function TechStackSection() {
             </div>
           </motion.article>
         ))}
-      </div> */}
-      <div className="relative mt-20 mb-10 space-y-5 overflow-hidden py-4">
+      </div>
+      {/* <div className="relative mt-20 mb-10 space-y-5 overflow-hidden py-4">
         {[0, 1].map((rowIndex) => (
           <div key={rowIndex} className="overflow-hidden">
             <motion.div
@@ -116,7 +117,7 @@ function TechStackSection() {
             </motion.div>
           </div>
         ))}
-      </div>
+      </div> */}
     </section>
   )
 }
