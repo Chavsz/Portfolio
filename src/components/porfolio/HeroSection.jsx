@@ -21,9 +21,19 @@ function HeroSection() {
         transition={{ duration: 0.6, delay: 0.1 }}
         className="mt-4 max-w-4xl text-6xl font-semibold tracking-tight text-zinc-50 md:text-8xl"
       >
-        Full-Stack
-        <br />
-        Developer
+        <motion.span
+          className="inline-block bg-linear-to-r from-gray-100 via-white to-gray-800 bg-clip-text text-transparent"
+          style={{
+            backgroundSize: "220% 100%",
+            filter: "drop-shadow(0 0 18px rgba(99,102,241,0.22))",
+          }}
+          animate={{ backgroundPosition: ["100% 50%", "0% 50%", "100% 50%"] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          Full-Stack
+          <br />
+          Developer
+        </motion.span>
       </motion.h1>
 
       <motion.p
